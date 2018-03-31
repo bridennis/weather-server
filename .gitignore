@@ -1,5 +1,4 @@
 target/
-log/
 .gitignore
 
 ### IntelliJ IDEA ###
@@ -7,3 +6,4 @@ log/
 *.iws
 *.iml
 *.ipr
+*.log
