@@ -21,18 +21,24 @@ public class Request {
 
         if (Pattern.compile("^.+?,[\\w]{2}$").matcher(request).matches()) {
             requestType = RequestType.CITY_COUNTRY;
-        } else if (Pattern.compile("^[0-9\\.]+ [0-9\\.]+$").matcher(request).matches()){
+        } else if (Pattern.compile("^[0-9\\.]+,[0-9\\.]+$").matcher(request).matches()){
             requestType = RequestType.GEO;
         }
 
         return requestType;
     }
 
+    /**
+     * Возвращает из запроса широту долготу.
+     *
+     * @param request Строковый запрос
+     * @return double[] Массив: широта, долгота
+     */
     public static double[] getLatLon(String request) {
         double[] latLon = new double[2];
 
-        if (Pattern.compile("^[0-9\\.]+ [0-9\\.]+$").matcher(request).matches()) {
-            String[] coords = request.split(" ");
+        if (Pattern.compile("^[0-9\\.]+,[0-9\\.]+$").matcher(request).matches()) {
+            String[] coords = request.split(",");
             latLon[0] = Double.parseDouble(coords[0]);
             latLon[1] = Double.parseDouble(coords[1]);
         }

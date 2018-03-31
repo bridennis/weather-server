@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 public class Weather implements Serializable {
 
+    private int id;
+
+    private Double lat;
+
+    private Double lon;
+
     private String city;
 
     private String country;
@@ -79,10 +85,37 @@ public class Weather implements Serializable {
         this.clouds = clouds;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLon() {
+        return lon;
+    }
+
+    public void setLon(Double lon) {
+        this.lon = lon;
+    }
+
     @Override
     public String toString() {
         return "Weather{" +
-                "city='" + city + '\'' +
+                "id=" + id +
+                ", lat=" + lat +
+                ", lon=" + lon +
+                ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
                 ", temp=" + temp +
                 ", pressure=" + pressure +
