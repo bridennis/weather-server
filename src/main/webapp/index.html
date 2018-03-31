@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Web Application</title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
+</head>
+<body>
+
+    <div class="wrapper container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-xs-12 col-sm-8">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">Текущий прогноз погоды</h1>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-xs-12 col-sm-10">
+                                Введите <u>один</u> из вариантов запроса:<br>
+                                <ol>
+                                    <li><b>Sankt-Peterburg</b> (название города на английском)</li>
+                                    <li><b>Moscow,ru</b> (название города на английском и через запятую <a href="https://www.iso.org/obp/ui/#search/code/" target="_blank">код страны</a>)</li>
+                                    <li><b>59.92,30.25</b> (географические координаты широты и долготы через запятую)</li>
+                                </ol>
+
+                                <form>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Название города ..." id="input-query" maxlength="64">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" id="input-submit"><i class="fa fa-search"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+
+                        <div class="row" id="result-row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-xs-12 col-sm-10" style="height:185px">
+                                <div class="alert alert-info hide" role="alert"></div>
+                                <div class="alert alert-warning hide" role="alert"></div>
+                                <div class="alert alert-danger hide" role="alert"></div>
+                                <div id="result" class="hide">
+                                    <ul>
+                                        <li>Город: <span id="city"></span></li>
+                                        <li>Широта (°): <span id="lat"></span></li>
+                                        <li>Долгота (°): <span id="lon"></span></li>
+                                        <li>Страна: <span id="country"></span></li>
+                                        <li>Температура (градус Цельсия): <span id="temp"></span></li>
+                                        <li>Давление (мм ртутного столба): <span id="pressure"></span></li>
+                                        <li>Влажность (%): <span id="humidity"></span></li>
+                                        <li>Ветер (м/c): <span id="wind"></span></li>
+                                        <li>Облачность (%): <span id="clouds"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <footer>
+                    <div class="pull-right small">Данные предоставлены сервисом <a href="http://openweathermap.org/" target="_blank">openweathermap.org</a></div>
+                </footer>
+
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
