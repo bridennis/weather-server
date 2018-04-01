@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bridennis/weather-server.svg?branch=master)](https://travis-ci.org/bridennis/weather-server)
+
 Тестовое задание: веб приложение для отображения погоды 
 ===============================
 Стек технологий: Java, Spring Framework (Spring Boot), Hazelcast (Cache Server), Websocket (STOMP)
