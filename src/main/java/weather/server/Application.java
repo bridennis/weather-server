@@ -17,11 +17,11 @@ import java.util.concurrent.TimeUnit;
 import static weather.server.config.RestApplicationConfig.*;
 
 @SpringBootApplication
-public class RestApplication {
+public class Application {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(RestApplication.class, args);
+        SpringApplication.run(Application.class, args);
 
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 

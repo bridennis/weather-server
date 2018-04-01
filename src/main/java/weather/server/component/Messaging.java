@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
-import weather.server.RestApplication;
+import weather.server.Application;
 import weather.server.entity.ResponseMessage;
 
 @Component
@@ -14,7 +14,7 @@ public class Messaging {
     @Autowired
     private final SimpMessagingTemplate messagingTemplate;
 
-    Logger log = LoggerFactory.getLogger(RestApplication.class);
+    Logger log = LoggerFactory.getLogger(Application.class);
 
     public Messaging() {
         messagingTemplate = null;
