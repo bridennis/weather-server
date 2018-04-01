@@ -23,15 +23,16 @@ public class OpenWeatherWorker extends Worker {
     @Override
     public ResponseMessage getWeather(String request) {
 
+//        // Delay simulating
 //        try {
-//            TimeUnit.SECONDS.sleep(10);
+//            TimeUnit.SECONDS.sleep(5);
 //        } catch (InterruptedException e) {}
 
         // Определяемся с типом полученного запроса и на основании этого формируем URL запроса
 
         RequestType requestType = Request.getType(request);
 
-        log.info("{} got request: {} typed as {}", OpenWeatherWorker.class, request, requestType);
+        log.info("Got request: [{}] typed as [{}]", request, requestType);
 
         String url;
 
@@ -68,7 +69,7 @@ public class OpenWeatherWorker extends Worker {
             } else if ("503".equals(jsonObject.get("cod").getAsString())) {
 
                 // Удаленный сервер недоступен
-                log.warn("Requested URL [{}] unavailable", url);
+                log.info("Requested URL [{}] unavailable", url);
 
                 return new ResponseMessage(503, null);
             } else if ("404".equals(jsonObject.get("cod").getAsString())) {
@@ -77,7 +78,7 @@ public class OpenWeatherWorker extends Worker {
         }
 
         // При получении запроса с удаленного ресурса произошла общая ошибка I/O
-        log.warn("Requested URL [{}] got an I/O error", url);
+        log.info("Requested URL [{}] got an I/O error", url);
 
         return new ResponseMessage(520, null);
     }

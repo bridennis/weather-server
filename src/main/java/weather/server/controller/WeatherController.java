@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import weather.server.entity.RequestMessage;
 import weather.server.service.WeatherService;
 
+import java.security.Principal;
+
 @Controller
 public class WeatherController {
 
@@ -21,10 +23,12 @@ public class WeatherController {
     }
 
     @MessageMapping("/request")
-    public void receiveRequest(RequestMessage request) {
+    public void receiveRequest(RequestMessage request, Principal principal) {
 
-        log.info("Get request {}", request.getRequest());
+        String userName = principal.getName();
 
-        weatherService.handleRequest(request.getRequest());
+        log.info("Got request [{}] by user [{}]", request.getRequest(), userName);
+
+        weatherService.handleRequest(request.getRequest(), userName);
     }
 }

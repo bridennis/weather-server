@@ -29,4 +29,12 @@ public class ResponseMessage {
     public void setWeather(Weather weather) {
         this.weather = weather;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseMessage{" +
+                "code=" + code +
+                ", weather=" + weather +
+                '}';
+    }
 }

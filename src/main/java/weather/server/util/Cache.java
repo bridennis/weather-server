@@ -17,7 +17,7 @@ public class Cache {
 
     private static HazelcastInstance instance = ApplicationContextProvider.getApplicationContext().getBean(HazelcastInstance.class);
 
-    public static boolean containsByQuery(String key) {
+    public static boolean contains(String key) {
 
         switch (Request.getType(key)) {
             case CITY_COUNTRY:

@@ -32,16 +32,16 @@ public class WeatherService {
      * Если клиентский запрос закэширован, сразу же возвращаем результат.
      * @param request Строка запроса
      */
-    public void handleRequest(String request) {
+    public void handleRequest(String request, String userName) {
 
-        if (Cache.containsByQuery(request)) {
+        if (Cache.contains(request)) {
             Weather weather = Cache.getByQuery(request);
-
-            log.info("Result from cache: {}", weather);
 
             // Возвращаем результат из кэша
 
             messagingService.sendMessage("/weather/" + request,  new ResponseMessage(200, weather));
+
+            log.info("Request [{}] by user [{}] send result from cache: [{}]", request, userName, weather);
 
             return;
         }
@@ -50,6 +50,7 @@ public class WeatherService {
 
         if (!requestQueue.contains(request)) {
             requestQueue.add(request);
+            log.info("Request [{}] by user [{}] added to Queue", request, userName);
         }
     }
 }

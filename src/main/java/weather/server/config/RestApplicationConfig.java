@@ -3,7 +3,6 @@ package weather.server.config;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.MapConfig;
 import com.hazelcast.config.QueueConfig;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -88,7 +87,6 @@ public class RestApplicationConfig extends WebSecurityConfigurerAdapter {
 
             users.add(new User("user1", "user1", grantedAuthority));
             users.add(new User("user2", "user2", grantedAuthority));
-            users.add(new User("user3", "user3", grantedAuthority));
 
             return new InMemoryUserDetailsManager(users);
         }
